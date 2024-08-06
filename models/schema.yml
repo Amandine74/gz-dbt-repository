@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: gz_raw_data
+    description: dataset of Greenweez
+    tables:
+      - name: raw_gz_product
+        description: table containing purchase price by product_id
+      - name: raw_gz_sales
+        description: revenue and qty by order qnd product_id
+      - name: raw_gz_ship
+        description: ship and log cost by order_id
