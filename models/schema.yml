@@ -6,7 +6,42 @@ sources:
     tables:
       - name: raw_gz_product
         description: table containing purchase price by product_id
+        columns:
+          - name: products_id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+          - name: purchase_price
+            description: price of the purchase by product_id
       - name: raw_gz_sales
         description: revenue and qty by order qnd product_id
+        tests:
+           - unique:
+            column_name: "(orders_id || '_' || products_id)"
+            description: primary key of the table
+        columns
+          - name: date_date
+            description: date of the sale
+          - name: order_id
+            description: id of the order 
+          - name: product-id
+            description: id of the product
+          - name: revenue
+            description: turnover for the product_id X order_id
+          - name: quantity
+            description: qty of product
       - name: raw_gz_ship
         description: ship and log cost by order_id
+        columns:
+          - name: orders_id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+          - name: shipping_fee
+            description:  amount charged to the customer
+          - name: logcost
+            description: logistics costs
+          - name: ship_cost
+            description: total cost incurred by the seller
