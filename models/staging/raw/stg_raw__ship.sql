@@ -12,7 +12,8 @@ renamed as (
         orders_id,
         shipping_fee,
         logcost,
-        ship_cost
+        CAST(ship_cost AS DECIMAL) AS ship_cost_numeric
+
 
     from source
 
