@@ -5,10 +5,48 @@ sources:
     schema: gz_raw_data
     tables:
       - name: sales 
-        identifier: raw_gz_sales 
+        identifier: raw_gz_sales
+        description: sqles og GZ
+        columns:
+          - name: date_date
+            description: the date of the purchase
+          - name: orders_id
+            description: foreign key to ship
+          - name: pdt_id
+            description: foreign key to product
+          - name: revenue
+            description: the amount paid by the customer
+          - name: quantity
+            description: the qty of products purhchased for this order
+        tests:
+          - unique:
+              column_name: "(orders_id || '-' || pdt_id)"
 
       - name: product
         identifier: raw_gz_product
+        description: products of  gz  
+        columns:
+          - name: products_id
+            description: primary key if the table
+            tests:
+              - unique
+              - not_null
+                  
+          - name: purchase_price
+            description: the purchase price of the product
 
       - name: ship
         identifier: raw_gz_ship 
+        description: ship of  gz  
+        columns:
+          - name: orders_id
+            description: primary key if the table
+            tests:
+              - unique
+              - not_null
+          - name: shipping_fee
+            description: price paid pvy the customer for shipping
+          - name: log_cost
+            description: cost of prepa the parcel in the warehouse
+          - name: ship_cost
+            description: ship cost paid by gz to the transporter
